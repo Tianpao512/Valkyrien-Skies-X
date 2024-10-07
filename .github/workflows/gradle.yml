@@ -1,4 +1,4 @@
-name: Build
+name: ForgeBuild
 
 on:
   push:
@@ -19,15 +19,15 @@ jobs:
     - name: Cache Gradle User Files
       uses: actions/cache@v1
       with:
-        path: ~/.gradle
+        path: ~/forge/.gradle
         key: ${{ runner.os }}-gradle-user-home
     - name: Cache Gradle Files
       uses: actions/cache@v1
       with:
-        path: ./.gradle
+        path: ./forge/.gradle
         key: ${{ runner.os }}-gradle-file
     - name: Grant execute permission for gradlew
-      run: chmod +x gradlew
+      run: chmod +x ./forge/gradlew
     - name: Build
       env:
         ARCLIGHT_FILES_TOKEN: ${{ secrets.ARCLIGHT_FILES_TOKEN }}
@@ -37,4 +37,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: FVS
-        path: ./build/libs/*.jar
+        path: ./build/forge/libs/*.jar
