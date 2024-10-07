@@ -27,7 +27,7 @@ jobs:
         path: ./forge/.gradle
         key: ${{ runner.os }}-gradle-file
     - name: Grant execute permission for gradlew
-      run: chmod +x ./forge/gradlew
+      run: chmod +x gradlew
     - name: Build
       env:
         ARCLIGHT_FILES_TOKEN: ${{ secrets.ARCLIGHT_FILES_TOKEN }}
